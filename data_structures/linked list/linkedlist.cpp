@@ -1,98 +1,148 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct node{
-	int data; // dữ liệu chứa trong 1 cái node
-	struct node *pNext; // con trỏ dùng để liên kết giữa các cái node với nhau
+struct Node{
+	int data;
+	Node *next;
 };
 
-typedef struct node NODE; // thay thế struct node thành NODE
+typedef struct Node* node;
 
-struct list_t{
-	NODE *pHead; // node quản lí đầu danh sách
-	NODE *pTail; // node quản lí cuối danh sách
-};
-
-typedef struct list_t LIST; // thay thế struct list_t thành LIST
-
-// khởi tao cấu trúc danh sách liên kết đơn các số nguyên
-
-void init(LIST &l){
-	// cho 2 node trỏ đến null - vì danh sách liên kết đơn chưa có phần tử
-	l.pHead=NULL;
-	l.pTail=NULL;
-}	
-
-// hàm khởi tạo một cái node
-
-NODE *init_NODE(int x){
-	NODE *p= new NODE; // cấp phát vùng nhớ cho NODE p
-	if(p==NULL){
-		cout<<"Khong du bo nho de cap phat"<<endl;
-		return NULL;
-	}
-	return p; // trả về node p vừa khởi tạo
-	p->data = x; // truyền giá trị x vào cho data
-	p->pNext=NULL; // dầu tiên khai báo node thì node chưa có liên kết đến node nào hết ==> con trỏ trỏ tới null
+//Cap phat dong mot node node moi voi du lieu la so nguyen x
+node makeNode(int x){
+	node tmp = new Node();
+	tmp->data = x;
+	tmp->next = NULL;
+	return tmp;	
 }
 
-// hàm thêm node vào đâu danh sách liên kết
+//Kiem tra rong
+bool empty(node a){
+	return a==NULL;
+}
 
-void initToHeadList(LIST &l, NODE *p){
-	// danh sách rỗng
-	if(l.pHead == NULL){
-		l.pHead=l.pTail=p; // node đầu cũng chính là node cuối và là p
+int Size(node a){
+	int cnt=0;
+	while(a != NULL){
+		cnt++;
+		a=a->next; // Gan dia chi node tiep theo cho node hien tai
+		// cho node hien taii nhay sang node tiep theo
+	}
+	return cnt;
+}
+
+// them 1 phan tu vao dau danh sach lien ket
+void insertFirst(node &a,int x){
+	node tmp=makeNode(x);
+	if(a == NULL){
+		a=tmp;
 	}
 	else{
-		p->pNext=l.pHead; // cho con trỏ của node cần thêm là node p liên kết đến node đầu - pHead
-		l.pHead=p; // cập nhật lại pHead chính là node p
+		tmp->next= a;
+		a=tmp;
 	}
-	
 }
 
-// hàm thêm node vào cuối danh sách liên kết
-
-void initToTailList(LIST &l, NODE *p){
-	// danh sách rỗng
-	if(l.pHead == NULL){
-		l.pHead=l.pTail=p; // node đầu cũng chính là node cuối và là p
+// them 1 phan tu vao cuoi danh sach
+void insertLast(node &a, int x){
+	node tmp=makeNode(x);
+	if(a == NULL){
+		a=tmp;
 	}
 	else{
-		l.pTail->pNext=p; // cho con trỏ của pTail liên kết với node p
-		l.pTail=p; // cặp nhật lại p là node pTail
+		node p=a;
+		while(p->next != NULL){
+			p=p->next;
+		}
+		p->next=tmp;
 	}
 }
 
-// hàm xuất danh sách liên kết đơn
-
-void outputList(LIST l){
-	NODE *k=l.pHead;
-	while (k != NULL){
-		cout<<k->data<<" ";
-		k=k->pNext;
+// Them 1 phan tu vao giua
+void insertMiddle(node &a, int x, int pos){
+	int n=Size(a);
+	// vi tri chen khong hop le
+	if(pos<=0 || pos> n+1)
+		return;
+	if(pos==1){
+		insertFirst(a,x);
+		return;
 	}
-	/*
-	for(NODE *k=l.pHead;k != NULL; k=k->pNext){
-		cout<<k->data<<" ";
-	}*/
+	else if(pos==n+1){
+		insertLast(a,x);
+		return;
+	}
+	node p=a;
+	for(int i=1;i<pos-1;i++){
+		p=p->next;
+	}
+	node tmp=makeNode(x);
+	tmp->next=p->next;
+	p->next=tmp;
+}
+
+// xoa phan tu dau
+void deleteFirst(node &a){
+	if(a==NULL)
+		return;
+	a=a->next;
+}
+
+// xoa phan tu cuoi
+void deleteLast(node &a){
+	if(a==NULL){
+		return;
+	}
+	node t=NULL;
+	node s=a;
+	while(s->next != NULL){
+		t=s;
+		s=s->next;
+	}
+	if(t==NULL){
+		a=NULL;
+	}
+	else{
+		t->next=NULL;
+	}
+}
+
+// Xoa o giua
+void deleteMiddle(node &a,int pos){
+	if(pos<=0 || pos>Size(a)){
+		return;
+	}
+	node t=NULL;
+	node s=a;
+	for(int i=0;i<pos;i++){
+		t=s;
+		s=s->next;
+	}
+	if(t==NULL){
+		a=a->next;
+	}
+	else{
+		t->next=s->next;
+	}
+
+}
+
+void in(node a){
+	while(a !=NULL){
+		cout<<a->data<<" ";
+		a=a->next;
+	}
 }
 
 int main(){
-	LIST l;
-	init(l); // khởi tạo danh sách liên kết đơn
-	int n;
-	cout<<"Nhap so luong node can them:";
-	cin>>n;
-	cout<<endl;
-	for(int i=1;i<=n;i++){
-		int x;
-		cout<<"Nhap gia tri so nguyen:";
-		cin>>x;
-		cout<<endl;
-		NODE *p= init_NODE(x); // khởi tạo 1 cái node số nguyên
-		initToHeadList(l,p); // thêm node p vào đầu danh sách liên kết đơn
-	}
-	cout<<" Danh sach lien ket don:"<<endl;
-	outputList(l);
+	node head=NULL;
+	insertFirst(head,6);
+	insertFirst(head,7);
+	insertFirst(head,8);
+	insertFirst(head,9);
+	insertLast(head,10);
+	insertMiddle(head,11,2);
+	deleteLast(head);
+	in(head);
 	return 0;
 }
