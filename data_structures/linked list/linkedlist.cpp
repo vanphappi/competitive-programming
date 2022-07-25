@@ -134,6 +134,20 @@ void in(node a){
 	}
 }
 
+void sapxep(node &a){
+	for(node p=a;p != NULL;p=p->next){
+		node min=p;
+		for(node q=p->next;q != NULL; q=q->next){
+			if(q->data <min->data){
+				min=q;
+			}
+		}
+		int tmp=min->data;
+		min->data=p->data;
+		p->data=tmp;
+	}
+}
+
 int main(){
 	node head=NULL;
 	insertFirst(head,6);
@@ -143,6 +157,7 @@ int main(){
 	insertLast(head,10);
 	insertMiddle(head,11,2);
 	deleteLast(head);
+	sapxep(head);
 	in(head);
 	return 0;
 }
