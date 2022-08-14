@@ -6,15 +6,10 @@ using namespace std;
 #define mod = 10e9+7
 
 
-void slove(){
-	
-}
-
 int main()
 {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 
-	slove();
 	return 0;
 }

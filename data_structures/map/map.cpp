@@ -6,12 +6,12 @@ using namespace std;
 int main(){
 	// map<datatype1,datatype2> mp;
 	map<int,int> mp;
-	mp[100]=200; // (100,200)
+	/*mp[100]=200; // (100,200)
 	mp[200]=300;
 	mp.insert({300,400});
 	mp.insert({400,500});
 	cout<<mp.size()<<endl;
-	mp[100]=300;
+	mp[100]=300;*/
 	cout<<mp.size()<<endl;
 
 	for(pair<int,int> x:mp){
