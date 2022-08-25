@@ -18,6 +18,11 @@ int main(){
 	v.push_back(10);
 	v.push_back(20);
 	v.push_back(30);
+	//lấy ra phần tử cuối của vector
+	cout<<v.back()<<endl;
+	//Xóa phần tử cuối của vector
+	v.pop_back();
+	cout<<v.back()<<endl;
 	// kích thước vector
 	cout<<v.size()<<endl;
 	// truy cập các phần thông qua chỉ số trong vector

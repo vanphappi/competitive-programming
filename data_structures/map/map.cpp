@@ -25,7 +25,7 @@ int main(){
 		cout<<(*it).first<<" "<<(*it).second<<endl;
 	}*/
 
-	if(mp.count(100) !=0)
+	if(mp.count(100))
 		cout<<"Found !"<<endl;
 	else
 		cout<<"Not found !"<<endl;	

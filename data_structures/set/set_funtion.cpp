@@ -28,7 +28,7 @@ int main(){
 		cout<<"Not found !"<<endl;
 	}
 
-	if(s.find(200) != s.end()){
+	if(s.find(900) == s.end()){
 		cout<<"Found !"<<endl;
 	}
 	else{
@@ -60,6 +60,5 @@ int main(){
 	cout<<*s.begin()<<endl;
 	// Truy cập đến phần tử cuối cùng
 	cout<<*s.rbegin()<<endl;
-
 	return 0;
 }

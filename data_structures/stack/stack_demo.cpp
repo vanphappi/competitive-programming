@@ -5,6 +5,7 @@ using namespace std;
 #define ll long long
 #define mod = 10e9+7
 
+//https://vnoi.info/wiki/algo/data-structures/Stack.md
 // LIFO : Last in first out
 // push
 // pop
