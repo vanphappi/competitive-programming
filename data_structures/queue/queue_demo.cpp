@@ -77,10 +77,49 @@ void demo_2(){
 	}
 }
 
+int demo_3(){
+	int m,n,x,y,z,t;
+	cin>>m>>n>>x>>y>>z>>t;
+	int A[m][n];
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+			cin>>A[i][j];
+		}
+	}
+	queue<pair<int,int>> q;
+	int dp[m][n];
+	int dx[4]={-1,1,0,0};
+	int dy[4]={0,0,1,-1};
+	memset(dp,0,sizeof(dp));
+	q.push({x,y});
+	dp[x][y]=0;
+	while(!q.empty()){
+		pair<int,int> tmp=q.front();
+		q.pop();
+		if(tmp.first == z && tmp.second== t)
+			return dp[tmp.first][tmp.second];
+		
+		int i=tmp.first;
+		int j=tmp.second;
+		for(int k=0;k<4;k++){
+			int im = i + dx[k];
+			int jn= j + dy[k];
+		
+			if(im >= 0 && im < m && jn >=0  && jn < n && A[im][jn] == 1){
+				if(im == z && jn == t)
+					return dp[i][j] + 1;
+				q.push({im,jn});
+				dp[im][jn] = dp[i][j] + 1;
+			}
+ 		}
+	}
+	return -1;
+}
+
 int main()
 {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-	demo_2();
+	cout<<demo_3();
 	return 0;
 }
