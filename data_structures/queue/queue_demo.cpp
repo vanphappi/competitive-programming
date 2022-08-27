@@ -96,6 +96,7 @@ int demo_3(){
 	while(!q.empty()){
 		pair<int,int> tmp=q.front();
 		q.pop();
+		//cout<<tmp.first<<" "<<tmp.second<<endl;
 		if(tmp.first == z && tmp.second== t)
 			return dp[tmp.first][tmp.second];
 		

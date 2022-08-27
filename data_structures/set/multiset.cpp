@@ -16,7 +16,7 @@ int main(){
 	for(int x:ms){
 		cout<<x<<" ";
 	}
-	cout<<endl;
+	cout<<*ms.find(100)<<endl;
 	cout<<ms.count(100)<<endl;
 	ms.erase(100); // Xóa hết các phần tử 100 trong set
 	/*
