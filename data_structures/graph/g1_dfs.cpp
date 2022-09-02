@@ -23,6 +23,7 @@ int n,m;
 vector<int> adj[1001];
 bool visited[1001];
 
+//chuyển đổi danh sách cạnh sang danh sách kề
 void inp(){
 	cin>>n>>m;
 	for(int i=0;i<m;i++){
@@ -35,8 +36,8 @@ void inp(){
 }
 
 void dfs(int u){
-	cout<<u<<" ";
-	visited[u]=true;
+	cout<<u<<" "; // in ra thứ tự duyệt
+	visited[u]=true; // đánh dấu đỉnh đã duyệt
 	for(int v:adj[u]){
 		if(!visited[v])
 			dfs(v);
