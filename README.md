@@ -1,3 +1,3 @@
-# Competitive programming, Data structure and algorithms.
+## Competitive programming, Data structure and algorithms.
 
  
