@@ -4,6 +4,14 @@ using namespace std;
 
  
 int main() {
+    #ifndef ONLINE_JUDGE
+ 
+    freopen("inputf.in", "r", stdin);
+ 
+    freopen("outputf.out", "w", stdout);
+   
+    #endif
+
     ios::sync_with_stdio(0);
     cin.tie(0);
 
