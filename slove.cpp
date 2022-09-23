@@ -13,12 +13,16 @@ void slove(){
 
 int main()
 {
-
+	#ifndef ONLINE_JUDGE
+ 
+    freopen("inputf.in", "r", stdin);
+ 
+    freopen("outputf.out", "w", stdout);
+   
+	#endif
 	
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 
-	int g=3;
-	cout<<++g*8;
 	return 0;
 }
