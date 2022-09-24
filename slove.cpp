@@ -11,6 +11,9 @@ void slove(){
 
 }
 
+//https://drive.google.com/file/d/1HKGCE5zzQ5bEbo6BAuN8J7dWy8tvJu2g/view
+
+
 int main()
 {
 	#ifndef ONLINE_JUDGE
