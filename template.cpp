@@ -14,7 +14,7 @@ int main()
  
     freopen("outputf.out", "w", stdout);
    
-	#endif
+    #endif
 
 	ios::sync_with_stdio(0);
 	cin.tie(0);
